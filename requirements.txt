@@ -1,0 +1,6 @@
+pbr
+
+thrift_connector
+oslo.log
+oslo.utils
+oslo.i18n
