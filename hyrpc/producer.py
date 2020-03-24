@@ -21,6 +21,9 @@ def recall(func):
     """Set recall serialization for RPC"""
     @functools.wraps(func)
     def ser_wrapper(*args, **kwargs):
+        args_list = list((map(lambda x: json.loads(x), list(args)[1:])))
+        args_list.insert(0, args[0])
+        args = tuple(args_list)
         ser = dict(data=func(*args, **kwargs))
         return json.dumps(ser)
     return ser_wrapper
