@@ -35,4 +35,6 @@ class ConsumerManagerBase(object):
                 kwargs[k] = json.dumps(v.to_dict())
                 continue
             kwargs[k] = json.dumps(v)
-        return json.loads(rpc_func(**kwargs)).get('data')
+        call_res = rpc_func(**kwargs)
+        if call_res:
+            return json.loads(rpc_func(**kwargs)).get('data')
